@@ -1,0 +1,29 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
+
+
+group 'fr.knightmar.launcher'
+version '1.0-SNAPSHOT'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'fr.knightmar.launcher.LauncherFrame'
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+test {
+    useJUnitPlatform()
+}
