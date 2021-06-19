@@ -1,9 +1,0 @@
-fr/knightmar/launcher/Launcher.java
- fr.knightmar.launcher.Launcher
- fr.knightmar.launcher.Launcher$1
-fr/knightmar/launcher/LauncherPanel.java
- fr.knightmar.launcher.LauncherPanel
- fr.knightmar.launcher.LauncherPanel$1
- fr.knightmar.launcher.LauncherPanel$2
-fr/knightmar/launcher/LauncherFrame.java
- fr.knightmar.launcher.LauncherFrame
