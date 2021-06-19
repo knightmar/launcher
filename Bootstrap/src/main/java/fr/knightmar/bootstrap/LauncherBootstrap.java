@@ -1,6 +1,5 @@
 package fr.knightmar.bootstrap;
 
-
 import fr.theshark34.openlauncherlib.LaunchException;
 import fr.theshark34.openlauncherlib.external.ClasspathConstructor;
 import fr.theshark34.openlauncherlib.external.ExternalLaunchProfile;
@@ -12,10 +11,11 @@ import fr.theshark34.openlauncherlib.util.explorer.ExploredDirectory;
 import fr.theshark34.openlauncherlib.util.explorer.Explorer;
 import fr.theshark34.supdate.SUpdate;
 
+import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
-import static fr.theshark34.swinger.Swinger.getResource;
-import static fr.theshark34.swinger.Swinger.setResourcePath;
 
 public class LauncherBootstrap {
 
@@ -25,7 +25,7 @@ public class LauncherBootstrap {
     private static Thread barThread;
 
     public static void main(String[] args) {
-        setResourcePath("/fr/knightmar/bootstrap/resources/");
+//        setResourcePath("/fr/knightmar/bootstrap/resources/");
         displaySplash();
 
         try {
@@ -45,14 +45,18 @@ public class LauncherBootstrap {
     }
 
     private static void displaySplash() {
-        splash = new SplashScreen("Launcher", getResource("splash.png"));
+        try {
+            splash = new SplashScreen("Launcher", ImageIO.read(Objects.requireNonNull(LauncherBootstrap.class.getResourceAsStream("/splash.png"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         splash.setLayout(null);
 
         splash.setVisible(true);
     }
 
     private static void doUpdate() throws Exception {
-        SUpdate su = new SUpdate("http://supdate.benetnath.fr/bootstrap/", new File(KN_B_DIR, "bootstrap"));
+        SUpdate su = new SUpdate("http://bootstrap.benetnath.fr/", new File(KN_B_DIR, "bootstrap"));
         su.getServerRequester().setRewriteEnabled(true);
 
         su.start();
@@ -62,10 +66,10 @@ public class LauncherBootstrap {
 
         ClasspathConstructor constructor = new ClasspathConstructor();
         ExploredDirectory gameDir = Explorer.dir(KN_B_DIR);
-        constructor.add(gameDir.sub("Libs").allRecursive().files().match("^(.*\\.((jar)$))*$"));
-        constructor.add(gameDir.get("launcher.jar"));
+        //constructor.add(gameDir.sub("bootstrap/Libs").allRecursive().files().match("^(.*\\.((jar)$))*$"));
+        constructor.add(gameDir.get("bootstrap/launcher.jar"));
 
-        ExternalLaunchProfile profile = new ExternalLaunchProfile("fr.knightmar.Launcher.LauncherFrame", constructor.make());
+        ExternalLaunchProfile profile = new ExternalLaunchProfile("fr.knightmar.launcher.LauncherFrame", constructor.make());
         ExternalLauncher launcher = new ExternalLauncher(profile);
 
         Process p = launcher.launch();

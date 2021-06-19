@@ -1,2 +1,5 @@
 rootProject.name = 'launcher_gradle'
+include 'Bootstrap'
+findProject(':Bootstrap')?.name = 'bootstrap'
+include 'test'
 

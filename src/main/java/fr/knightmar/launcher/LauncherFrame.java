@@ -31,7 +31,6 @@ public class LauncherFrame extends JFrame {
         this.addMouseListener(mover);
         this.addMouseMotionListener(mover);
 
-
         this.setVisible(true);
 
         Animator.fadeInFrame(this, Animator.FAST);

@@ -1,10 +1,29 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.2.0'
-    id 'java'
+    id 'java-library'
 }
 
+allprojects{
+    apply plugin:"com.github.johnrengelman.shadow"
+    apply plugin:"java-library"
+    group 'fr.knightmar'
 
-group 'fr.knightmar.launcher'
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://litarvan.github.io/maven"
+        }
+    }
+
+    dependencies {
+        implementation "fr.theshark34.s-update:s-update:3.1.0-BETA"
+        implementation "fr.theshark34.swinger:swinger:1.0.1-BETA"
+        implementation "fr.litarvan:openauth:1.1.1"
+        implementation "fr.flowarg:openlauncherlib:3.1.7"
+        implementation "com.google.code.gson:gson:2.8.7"
+    }
+}
+
 version '1.0-SNAPSHOT'
 
 jar {
@@ -13,17 +32,9 @@ jar {
     }
 }
 
-
 repositories {
-    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
-
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    compile fileTree(dir: 'libs', include: '*.jar')
-}
-
-test {
-    useJUnitPlatform()
+    implementation "com.azuriom:azauth:1.0-SNAPSHOT"
 }
