@@ -44,7 +44,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         usernameField.setCaretColor(Color.WHITE);
         usernameField.setOpaque(false);
         usernameField.setBorder(null);
-        usernameField.setBounds(100, 423, 262, 39);
+        usernameField.setBounds(705, 200, 262, 39);
         this.add(usernameField);
 
         passwordField.setForeground(Color.white);
@@ -52,10 +52,10 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         passwordField.setCaretColor(Color.WHITE);
         passwordField.setOpaque(false);
         passwordField.setBorder(null);
-        passwordField.setBounds(630, 423, 262, 39);
+        passwordField.setBounds(705, 280, 262, 39);
         this.add(passwordField);
 
-        playButton.setBounds(341, 480);
+        playButton.setBounds(341, 400);
         playButton.setSize(350, 118);
         playButton.addEventListener(this);
         this.add(playButton);
@@ -105,6 +105,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
                         setFieldEnabled(true);
                         return;
                     }
+                    
 
 
                     saver.set("username", usernameField.getText());

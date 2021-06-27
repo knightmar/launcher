@@ -11,6 +11,7 @@ import fr.theshark34.supdate.BarAPI;
 import fr.theshark34.supdate.SUpdate;
 import fr.theshark34.supdate.application.integrated.FileDeleter;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -34,6 +35,7 @@ public class Launcher {
             authInfos = authenticator.authenticate(username, password, AuthInfos.class);
         } catch (com.azuriom.azauth.AuthenticationException | IOException e) {
             e.printStackTrace();
+
         }
 
     }

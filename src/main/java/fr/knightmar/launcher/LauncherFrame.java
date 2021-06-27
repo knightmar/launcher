@@ -18,8 +18,8 @@ public class LauncherFrame extends JFrame {
 
 
     public LauncherFrame() {
-        this.setTitle("launcher du server Modu");
-        this.setSize(975, 625);
+        this.setTitle("Launcher");
+        this.setSize(960, 540);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setUndecorated(true);
