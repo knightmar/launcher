@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-
 public class LauncherBootstrap {
 
     private static final File KN_B_DIR = new File(GameDirGenerator.createGameDir("Server Modu"), "Launcher");
@@ -25,7 +24,6 @@ public class LauncherBootstrap {
     private static Thread barThread;
 
     public static void main(String[] args) {
-//        setResourcePath("/fr/knightmar/bootstrap/resources/");
         displaySplash();
 
         try {
@@ -66,7 +64,6 @@ public class LauncherBootstrap {
 
         ClasspathConstructor constructor = new ClasspathConstructor();
         ExploredDirectory gameDir = Explorer.dir(KN_B_DIR);
-        //constructor.add(gameDir.sub("bootstrap/Libs").allRecursive().files().match("^(.*\\.((jar)$))*$"));
         constructor.add(gameDir.get("bootstrap/launcher.jar"));
 
         ExternalLaunchProfile profile = new ExternalLaunchProfile("fr.knightmar.launcher.LauncherFrame", constructor.make());
