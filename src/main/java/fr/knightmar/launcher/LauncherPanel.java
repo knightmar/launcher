@@ -55,8 +55,8 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         passwordField.setBounds(705, 280, 262, 39);
         this.add(passwordField);
 
-        playButton.setBounds(341, 400);
-        playButton.setSize(350, 118);
+        playButton.setBounds(750, 370);
+        playButton.setSize(306/4, 321/4);
         playButton.addEventListener(this);
         this.add(playButton);
 
@@ -105,7 +105,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
                         setFieldEnabled(true);
                         return;
                     }
-                    
+
 
 
                     saver.set("username", usernameField.getText());
