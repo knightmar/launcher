@@ -14,7 +14,7 @@ public class LauncherFrame extends JFrame {
 
     private static LauncherFrame instance;
     private static CrashReporter crashReporter;
-    private LauncherPanel launcherPanel;
+    private final LauncherPanel launcherPanel;
 
 
     public LauncherFrame() {
