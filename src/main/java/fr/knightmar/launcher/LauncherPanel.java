@@ -128,9 +128,12 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
             try {
                 AzAuthenticator authenticator = new AzAuthenticator("http://azuriom.benetnath.fr/");
                 authInfos = authenticator.authenticate(usernameField.getText(), passwordField.getText(), AuthInfos.class);
+                System.out.println(authInfos);
+                System.exit(1);
             } catch (com.azuriom.azauth.AuthenticationException | IOException e) {
+                e.printStackTrace();
 
-                if (Objects.equals(e.getMessage(), "Invalid credentials")) {
+                if (Objects.equals(e.getMessage(), "Invalid credentials") || passwordField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(LauncherPanel.this, "Erreur, impossible de se connecter : Login ou mot de passe invalides", "Erreur", JOptionPane.ERROR_MESSAGE);
                     setFieldEnabled(true);
                     return;
@@ -153,13 +156,12 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
             }
             try {
                 Launcher.launch();
-                infobar.setText("Lancement du jeu en cours");
             } catch (LaunchException launchException) {
                 LauncherFrame.getCrashReporter().catchError(launchException, "Impossible de lancer le jeu");
                 setFieldEnabled(true);
 
             }
-            System.out.println("ok");
+            infobar.setText("Lancement du jeu en cours");
         } else if (event.getSource() == quitButton) {
             Animator.fadeOutFrame(LauncherFrame.getInstance(), Animator.FAST, () -> System.exit(0));
         } else if (event.getSource() == hideButton) {

@@ -11,6 +11,7 @@ import fr.theshark34.supdate.SUpdate;
 import fr.theshark34.supdate.application.integrated.FileDeleter;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import static fr.theshark34.swinger.Swinger.percentage;
 
@@ -18,11 +19,10 @@ public class Launcher {
 
     public static NewForgeVersionDiscriminator discriminator = new NewForgeVersionDiscriminator("36.1.0", "1.16.5", "20210115.111550");
     public static final GameVersion KN_VERSION = new GameVersion("1.16.5", GameType.V1_13_HIGHER_FORGE.setNewForgeVersionDiscriminator(discriminator));
-    public static final GameInfos KN_INFOS = new GameInfos("Server Modu", KN_VERSION, new GameTweak[]{});
-    public static final File KN_DIR = KN_INFOS.getGameDir();
+    public static final GameInfos KN_INFOS = new GameInfos("Mod knightmar", KN_VERSION, new GameTweak[]{});
+    public static final File KN_DIR = KN_INFOS.getGameDir().toFile();
     public static final File KN_CRASH_DIR = new File(KN_DIR, "crash");
 
-    private static AuthInfos authInfos;
     private static Thread updateThread;
 
 
@@ -45,6 +45,7 @@ public class Launcher {
 
             @Override
             public void run() {
+                System.out.println("ok");
                 while (!this.isInterrupted()) {
                     val = (int) BarAPI.getNumberOfTotalDownloadedBytes() / 1000;
                     max = (int) BarAPI.getNumberOfTotalBytesToDownload() / 1000;
@@ -74,7 +75,7 @@ public class Launcher {
     }
 
     public static void launch() throws LaunchException {
-        authInfos = LauncherPanel.getAuthInfos();
+        AuthInfos authInfos = LauncherPanel.getAuthInfos();
         ExternalLaunchProfile profile = MinecraftLauncher.createExternalProfile(KN_INFOS, GameFolder.BASIC, authInfos);
 
         ExternalLauncher launcher = new ExternalLauncher(profile);

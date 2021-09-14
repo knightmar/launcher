@@ -19,8 +19,8 @@ allprojects{
         implementation "fr.theshark34.s-update:s-update:3.1.0-BETA"
         implementation "fr.theshark34.swinger:swinger:1.0.1-BETA"
         implementation "fr.litarvan:openauth:1.1.1"
-        implementation "fr.flowarg:openlauncherlib:3.1.7"
-        implementation "com.google.code.gson:gson:2.8.7"
+        implementation 'fr.flowarg:openlauncherlib:3.2.2'
+        implementation 'com.google.code.gson:gson:2.8.8'
     }
 }
 

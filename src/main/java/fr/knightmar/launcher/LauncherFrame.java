@@ -42,7 +42,7 @@ public class LauncherFrame extends JFrame {
         setSystemLookNFeel();
         setResourcePath("/");
         Launcher.KN_CRASH_DIR.mkdirs();
-        crashReporter = new CrashReporter("Modu launcher", Launcher.KN_CRASH_DIR);
+        crashReporter = new CrashReporter("knightmar Launcher", Launcher.KN_CRASH_DIR);
 
         instance = new LauncherFrame();
     }

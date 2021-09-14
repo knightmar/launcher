@@ -18,8 +18,8 @@ import java.util.Objects;
 
 public class LauncherBootstrap {
 
-    private static final File KN_B_DIR = new File(GameDirGenerator.createGameDir("Server Modu"), "Launcher");
-    private static final CrashReporter KN_B_REPORTER = new CrashReporter("Modu bootstrap", KN_B_DIR);
+    private static final File KN_B_DIR = new File(GameDirGenerator.createGameDir("Mod knightmar",false).toFile(), "Launcher");
+    private static final CrashReporter KN_B_REPORTER = new CrashReporter("Mod knightmar", KN_B_DIR);
     private static SplashScreen splash;
     private static Thread barThread;
 
@@ -63,7 +63,7 @@ public class LauncherBootstrap {
     private static void launchLauncher() throws LaunchException {
 
         ClasspathConstructor constructor = new ClasspathConstructor();
-        ExploredDirectory gameDir = Explorer.dir(KN_B_DIR);
+        ExploredDirectory gameDir = Explorer.dir(KN_B_DIR.toPath());
         constructor.add(gameDir.get("bootstrap/launcher.jar"));
 
         ExternalLaunchProfile profile = new ExternalLaunchProfile("fr.knightmar.launcher.LauncherFrame", constructor.make());
